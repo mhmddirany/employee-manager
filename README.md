@@ -40,7 +40,7 @@ assets/js/app.js     → all the jQuery: debounced search, delegated events, AJA
 database/schema_mysql.sql → equivalent schema if you want to switch to a real MySQL server
 ```
 
-## Things worth pointing out in an interview
+## Things worth pointing out 
 
 - **Required fields / can't submit if missing:** enforced twice — once client-side in jQuery (`assets/js/app.js`'s `validateFormClientSide()`, blocks the AJAX call entirely) and again server-side in `api/employees.php`'s `validate_employee()` (returns HTTP 422 + a per-field error map that the JS then renders under each input). The server check is the one that actually matters; the client check is just a fast first pass.
 - **Privileges:** `includes/auth.php`'s `can()` function is a single source of truth for what each role may do, checked both in the UI (hiding buttons/nav links) and again in every API endpoint (so a viewer can't just call the API directly to bypass the UI).
